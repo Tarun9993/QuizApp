@@ -7,7 +7,6 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Result from './components/Result'
 import { ThemeContext } from './context/ThemeContext'
 import Footer from './components/Footer'
-
 const App = () => {
   const location = useLocation()
   const { theme } = useContext(ThemeContext); 
