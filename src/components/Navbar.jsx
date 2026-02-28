@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const isDark = theme === "dark";
   return (
-    <nav className={`${isDark ? "border-[#384664]" : "border-neutral-200"} w-full border-b  sticky top-0 z-50`} >
+    <nav className={`${isDark ? "bg-[#0f172a]/60 border-[#384664]"  : "bg-white/60 border-neutral-200"}  backdrop-blur-lg shadow-sm w-full border-b sticky top-0 z-50 transition-all duration-300`} >
       <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
 
         <div className={`${isDark ? "text-white" : "text-black"} flex items-center gap-2 cursor-pointer`}   onClick={() => navigate("/")}>

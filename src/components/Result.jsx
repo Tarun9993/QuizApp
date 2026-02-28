@@ -6,6 +6,7 @@ import { CiHome } from "react-icons/ci";
 import { IoShareOutline } from "react-icons/io5";
 import { ThemeContext } from '../context/ThemeContext';
 import { motion } from "framer-motion";
+import { toast } from 'react-toastify';
 const Result = () => {
 
   const location = useLocation();
@@ -26,6 +27,15 @@ const Result = () => {
   const accuracy = total > 0
     ? Math.round((score / total) * 100)
     : 0;
+
+    const notify = () => {
+  toast.error("Something went wrong!", {
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    theme: "colored",
+  });
+};
 
     const isDark = theme === "dark"
 
@@ -101,19 +111,19 @@ const Result = () => {
          initial={{ opacity: 0, y: 20 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.6 }}
-         className='flex flex-col sm:flex-row py-5 justify-center items-center gap-4 sm:gap-5'>
+         className='flex flex-col mx-5 sm:mx-0 sm:flex-row py-5 justify-center items-center gap-4 sm:gap-5'>
 
-          <div className={`${isDark ? "border-[#384664]" : "border-neutral-300"} border  cursor-pointer bg-blue-600 hover:scale-105 transition duration-200 text-white font-semi-bold rounded-xl px-10 py-2 shadow text-center flex justify-center items-center gap-1 w-full sm:w-auto`}>
+          <div className={`${isDark ? "border-[#384664]" : "border-neutral-300"} border  cursor-pointer bg-blue-600 hover:scale-105 transition duration-200 text-white font-semi-bold rounded-xl px-10 py-2 shadow text-center flex justify-center items-center gap-1 w-full sm:w-auto`}  onClick={() => navigate(-1)} >
             <span><FaArrowRotateLeft /></span>
             <p>Play Again</p>
           </div>
 
           <div className={`${isDark ? "border-[#384664] text-white" : "border-neutral-300"} border  cursor-pointer rounded-xl shadow px-10 py-2 text-center hover:scale-105 transition duration-200 hover:bg-yellow-500 flex justify-center items-center gap-1 w-full sm:w-auto font-semibold`}>
             <span><CiHome /></span>
-            <p>Go to Home</p>
+            <p  onClick={() => navigate("/")}>Go to Home</p>
           </div>
 
-          <div className={` ${isDark ? "border-[#384664]" : "border-neutral-300"} border  cursor-pointer rounded-xl shadow px-10 py-2 text-center flex justify-center items-center gap-1 text-[#DB7706] hover:scale-105 transition duration-200 w-full sm:w-auto font-bold`}>
+          <div className={` ${isDark ? "border-[#384664]" : "border-neutral-300"} border  cursor-pointer rounded-xl shadow px-10 py-2 text-center flex justify-center items-center gap-1 text-[#DB7706] hover:scale-105 transition duration-200 w-full sm:w-auto font-bold`} onClick={notify}>
             <span><IoShareOutline /></span>
             <p>Share Score</p>
           </div>
